@@ -181,3 +181,16 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  action:
+    destroy: 削除する
+    edit: 編集画面へ
+    index: 一覧画面へ
+    new: 新規登録画面へ
+    show: 詳細画面へ
+  page_title:
+    edit: 編集画面
+    new: 新規登録画面
+  success_message:
+    created: 本が正常に投稿されました。
+    destroyed: 本の投稿が正常に削除されました。
+    updated: 本の投稿が正常に更新されました。

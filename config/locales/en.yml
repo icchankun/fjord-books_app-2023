@@ -215,3 +215,16 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  action:
+    destroy: Destroy this book
+    edit: Edit this book
+    index: Back to books
+    new: New Book
+    show: Show this book
+  page_title:
+    edit: Editing book
+    new: New book
+  success_message:
+    created: Book was successfully created.
+    destroyed: Book was successfully destroyed.
+    updated: Book was successfully updated.
