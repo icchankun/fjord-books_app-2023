@@ -191,6 +191,6 @@ ja:
     edit: 編集画面
     new: 新規登録画面
   success_message:
-    created: 本が正常に投稿されました。
-    destroyed: 本の投稿が正常に削除されました。
-    updated: 本の投稿が正常に更新されました。
+    created: "%{model}が正常に投稿されました。"
+    destroyed: "%{model}の投稿が正常に削除されました。"
+    updated: "%{model}の投稿が正常に更新されました。"

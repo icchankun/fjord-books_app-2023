@@ -225,6 +225,6 @@ en:
     edit: Editing book
     new: New book
   success_message:
-    created: Book was successfully created.
-    destroyed: Book was successfully destroyed.
-    updated: Book was successfully updated.
+    created: "%{model} was successfully created."
+    destroyed: "%{model} was successfully destroyed."
+    updated: "%{model} was successfully updated."
