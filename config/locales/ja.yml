@@ -201,6 +201,7 @@ ja:
       next: '次 ›'
       truncate: '…'
     users:
+      edit: 登録情報を編集する
       logout: 'ログアウトする'
   controllers:
     common:
