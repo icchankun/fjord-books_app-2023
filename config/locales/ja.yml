@@ -187,6 +187,7 @@ ja:
       edit: "この%{name}を編集"
       destroy: "この%{name}を削除"
       new: "%{name}の新規作成"
+      index: "%{name}の一覧を表示"
       back: "%{name}の一覧に戻る"
       delete_confirm: よろしいですか？
       title_index: "%{name}の一覧"
@@ -201,8 +202,9 @@ ja:
       next: '次 ›'
       truncate: '…'
     users:
-      edit: 登録情報を編集する
-      logout: 'ログアウトする'
+      edit: プロフィールを編集する
+      logout: ログアウトする
+      show: プロフィールを表示する
   controllers:
     common:
       notice_create: "%{name}が作成されました。"

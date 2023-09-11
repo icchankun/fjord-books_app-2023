@@ -1,0 +1,3 @@
+<p><%= link_to t('views.users.logout'), destroy_user_session_path, data: { "turbo-method": :delete } %></p>
+<p><%= link_to t('views.users.show'), user_path(current_user.id) %></p>
+<p><%= link_to t('views.users.edit', name: User.model_name.human.downcase), edit_user_registration_path %></p>
