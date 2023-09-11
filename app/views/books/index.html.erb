@@ -1,3 +1,8 @@
+<header>
+  <%= render 'layouts/header' %>
+  <p><%= link_to t('views.common.index', name: User.model_name.human.downcase), users_path %></p>
+</header>
+
 <p style="color: green"><%= notice %></p>
 
 <h1><%= t('views.common.title_index', name: i18n_pluralize(Book.model_name.human)) %></h1>
