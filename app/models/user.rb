@@ -16,6 +16,6 @@ class User < ApplicationRecord
     return unless avatar.attached? && !avatar.content_type.in?(%w[image/jpeg image/png image/gif])
 
     avatar.purge
-    errors.add(:avatar, message: 'のファイル形式は、jpg, png, gifのいずれかにしてください。')
+    errors.add(:avatar, message: I18n.t('errors.messages.wrong_format'))
   end
 end
