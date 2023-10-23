@@ -10,3 +10,15 @@
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+<div id="comments" class="index-items">
+  <% @book.comments.each do |comment| %>
+    <div class="index-item">
+      <%= render 'comments/comment', parent: @book, comment: comment %>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @book.comments.order(:id).page(params[:page]) %>
+
+<%= render 'comments/form', parent: @book, comment: @comment || Comment.new %>

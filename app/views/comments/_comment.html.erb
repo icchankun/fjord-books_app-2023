@@ -1,0 +1,26 @@
+<div id="<%= dom_id comment %>">
+  <p>
+    <%= comment.body %>
+  </p>
+
+  <p>
+    <% if comment.user.name %>
+      <strong><%= User.human_attribute_name(:name) %>:</strong>
+      <%= comment.user.name %>
+    <% else %>
+      <strong><%= User.human_attribute_name(:email) %>:</strong>
+      <%= comment.user.email %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
+    <%= comment.created_at %>
+  </p>
+
+  <% if current_user.id == comment.user_id %>
+    <nav class="page-nav">
+      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [parent, comment], method: :delete %>
+    </nav>
+  <% end %>
+</div>
