@@ -14,3 +14,15 @@
     <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
   <% end %>
 </nav>
+
+<div id="comments" class="index-items">
+  <% @report.comments.each do |comment| %>
+    <div class="index-item">
+      <%= render 'comments/comment', parent: @report, comment: comment %>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @report.comments.order(:id).page(params[:page]) %>
+
+<%= render 'comments/form', parent: @report, comment: @comment || Comment.new %>
