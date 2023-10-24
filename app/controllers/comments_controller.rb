@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[show destroy]
-  before_action :check_for_authorization, only: %i[destroy]
+  before_action :set_comment, only: %i[show edit update destroy]
+  before_action :check_for_authorization, only: %i[edit update destroy]
 
   def show; end
+
+  def edit; end
 
   def create
     @comment = current_user.comments.new(comment_params)
@@ -14,6 +16,14 @@ class CommentsController < ApplicationController
     else
       instance_variable_set("@#{@comment.commentable_type.downcase}", @comment.commentable)
       render "#{@comment.commentable_type.tableize}/show", status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to [@comment.commentable, @comment], notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
