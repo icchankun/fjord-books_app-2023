@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[destroy]
+  before_action :set_comment, only: %i[show destroy]
   before_action :check_for_authorization, only: %i[destroy]
+
+  def show; end
 
   def create
     @comment = current_user.comments.new(comment_params)

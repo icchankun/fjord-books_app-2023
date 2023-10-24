@@ -1,0 +1,13 @@
+<h1><%= t('views.common.title_show', name: Comment.model_name.human.downcase) %></h1>
+
+<div class="show-item">
+  <%= render 'comment', parent: @comment.commentable, comment: @comment %>
+</div>
+
+<nav class="page-nav">
+  <%= link_to t('views.common.back', name: i18n_pluralize(Comment.model_name.human.downcase)), @comment.commentable %>
+
+  <% if current_user.id == @comment.user_id %>
+    <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [@comment.commentable, @comment], method: :delete %>
+  <% end %>
+</nav>

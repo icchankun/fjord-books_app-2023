@@ -15,6 +15,9 @@
   <% @book.comments.each do |comment| %>
     <div class="index-item">
       <%= render 'comments/comment', parent: @book, comment: comment %>
+      <p>
+        <%= link_to t('views.common.show', name: Comment.model_name.human.downcase), [@book, comment] %>
+      </p>
     </div>
   <% end %>
 </div>

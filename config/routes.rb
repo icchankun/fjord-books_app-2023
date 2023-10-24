@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'books#index'
 
   concern :commentable do
-    resources :comments, only: %i(create destroy)
+    resources :comments, only: %i(create show destroy)
   end
 
   resources :books, concerns: :commentable

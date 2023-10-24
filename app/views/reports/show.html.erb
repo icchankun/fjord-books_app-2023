@@ -19,6 +19,9 @@
   <% @report.comments.each do |comment| %>
     <div class="index-item">
       <%= render 'comments/comment', parent: @report, comment: comment %>
+      <p>
+        <%= link_to t('views.common.show', name: Comment.model_name.human.downcase), [@report, comment] %>
+      </p>
     </div>
   <% end %>
 </div>
