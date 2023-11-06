@@ -46,7 +46,7 @@ class ReportsController < ApplicationController
   end
 
   def check_for_authorization
-    redirect_to report_url(@report) unless current_user.id == @report.user_id
+    redirect_to report_url(@report) if current_user.id != @report.user_id
   end
 
   def report_params

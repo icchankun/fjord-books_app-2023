@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
   end
 
   def check_for_authorization
-    redirect_to @comment.commentable unless current_user.id == @comment.user_id
+    redirect_to @comment.commentable if current_user.id != @comment.user_id
   end
 
   def comment_params
