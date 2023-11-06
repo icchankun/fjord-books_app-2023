@@ -1,0 +1,31 @@
+<h1><%= t('views.common.title_show', name: Report.model_name.human) %></h1>
+
+<div class="show-item">
+  <%= render @report %>
+</div>
+
+<nav class="page-nav">
+  <% if current_user.id == @report.user_id %>
+    <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
+  <% end %>
+  <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
+
+  <% if current_user.id == @report.user_id %>
+    <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
+  <% end %>
+</nav>
+
+<div id="comments" class="index-items">
+  <% @report.comments.each do |comment| %>
+    <div class="index-item">
+      <%= render 'comments/comment', parent: @report, comment: comment %>
+      <p>
+        <%= link_to t('views.common.show', name: Comment.model_name.human.downcase), [@report, comment] %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @report.comments.order(:id).page(params[:page]) %>
+
+<%= render 'comments/form', parent: @report, comment: @comment || Comment.new %>
