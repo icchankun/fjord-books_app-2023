@@ -10,12 +10,14 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new(comment_params)
+    resource, commentable_id = request.path.split('/')[1, 2]
+    @comment.assign_attributes(commentable_id:, commentable_type: resource.classify)
 
     if @comment.save
       redirect_to @comment.commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      instance_variable_set("@#{@comment.commentable_type.downcase}", @comment.commentable)
-      render "#{@comment.commentable_type.tableize}/show", status: :unprocessable_entity
+      instance_variable_set("@#{resource.singularize}", @comment.commentable)
+      render "#{resource}/show", status: :unprocessable_entity
     end
   end
 
@@ -43,6 +45,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :commentable_id, :commentable_type)
+    params.require(:comment).permit(:body)
   end
 end
