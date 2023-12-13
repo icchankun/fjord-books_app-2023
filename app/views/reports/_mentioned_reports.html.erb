@@ -1,0 +1,11 @@
+<div id="mentioned_reports">
+  <p>
+    <strong><%= t('views.common.mentioned_reports') %></strong>
+  </p>
+
+  <% @report.mentioned_reports.each do |mentioned_report| %>
+    <p>
+      <strong><%= link_to mentioned_report.title, mentioned_report %></strong><%= t('views.common.mentioned') %>
+    </p>
+  <% end %>
+</div>
