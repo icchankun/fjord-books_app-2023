@@ -4,8 +4,7 @@ class Mention < ApplicationRecord
   belongs_to :mentioning, class_name: 'Report'
   belongs_to :mentioned, class_name: 'Report'
 
-  validates :mentioning_id, presence: true, uniqueness: { scope: :mentioned_id }
-  validates :mentioned_id, presence: true
+  validates :mentioning_id, uniqueness: { scope: :mentioned_id }
 
   def self.save_only_mentioning_reports(report)
     mentioning_report_ids_diff = report.fetch_mentioning_report_ids_diff
