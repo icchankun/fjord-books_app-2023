@@ -40,11 +40,7 @@ class Report < ApplicationRecord
   private
 
   def extract_report_ids_in_content
-    urls_without_comment_url = search_urls_without_comment_url
-    urls_without_comment_url.join.scan(%r{reports/(\d+)}).flatten.map(&:to_i)
-  end
-
-  def search_urls_without_comment_url
-    URI.extract(content, ['http']).reject { |url| url.include?('comments') }
+    urls_in_content = URI.extract(content, ['http'])
+    urls_in_content.join.scan(%r{reports/(\d+)}).flatten.map(&:to_i)
   end
 end
