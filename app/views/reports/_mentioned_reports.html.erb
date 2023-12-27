@@ -3,7 +3,7 @@
     <strong><%= t('views.common.mentioned_reports') %></strong>
   </p>
 
-  <% @report.mentioned_reports.each do |mentioned_report| %>
+  <% @report.mentioned_reports.order(:id).each do |mentioned_report| %>
     <p>
       <strong><%= link_to mentioned_report.title, mentioned_report %></strong><%= t('views.common.mentioned') %>
     </p>
