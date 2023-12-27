@@ -1,12 +1,12 @@
 <div id="mentioned_reports">
   <p>
-    <strong><%= t('views.common.mentioned_reports') %></strong>
+    <strong><%= t('views.mention.mentioned_reports') %></strong>
   </p>
 
   <ul>
   <% report.mentioned_reports.order(:id).each do |mentioned_report| %>
     <li>
-      <strong><%= link_to mentioned_report.title, mentioned_report %></strong><%= t('views.common.mentioned') %>
+      <strong><%= link_to mentioned_report.title, mentioned_report %></strong><%= t('views.mention.mentioned_by') %>
     </li>
   <% end %>
   </ul>
