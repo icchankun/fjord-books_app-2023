@@ -28,8 +28,8 @@ class Report < ApplicationRecord
     add_ids = mentioning_report_ids_diff[:added_ids]
     remove_ids = mentioning_report_ids_diff[:removed_ids]
 
-    add_mentions(add_ids) if add_ids.present?
-    remove_mentions(remove_ids) if remove_ids.present?
+    add_mentions(add_ids)
+    remove_mentions(remove_ids)
   end
 
   def fetch_mentioning_report_ids_diff
