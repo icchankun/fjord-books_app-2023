@@ -51,7 +51,6 @@ class Report < ApplicationRecord
   end
 
   def extract_report_ids_in_content
-    urls_in_content = URI.extract(content, ['http'])
-    urls_in_content.map { |url_in_content| url_in_content.scan(%r{http://localhost:3000/reports/(\d+)}) }.flatten.map(&:to_i)
+    content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
   end
 end
