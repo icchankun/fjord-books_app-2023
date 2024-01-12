@@ -34,7 +34,7 @@ class Report < ApplicationRecord
 
   def fetch_mentioning_report_ids_diff
     report_ids_in_content = extract_report_ids_in_content
-    mentioning_report_ids = mentioning_reports.map(&:id)
+    mentioning_report_ids = mentioning_reports.ids
 
     {
       added_ids: report_ids_in_content - mentioning_report_ids,
