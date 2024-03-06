@@ -4,4 +4,4 @@ alice:
   user: alice
   title: 初めての日報
   content: よろしくお願いします。
-  created_at: <%= Time.zone.parse('2024-01-01 12:00:00') %>
+  created_at: <%= Time.current %>
