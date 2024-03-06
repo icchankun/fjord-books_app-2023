@@ -5,6 +5,7 @@ require 'test_helper'
 class ReportTest < ActiveSupport::TestCase
   test 'editable?' do
     assert reports(:alice).editable?(users(:alice))
+    assert_not reports(:alice).editable?(users(:bob))
   end
 
   test 'created_on' do
