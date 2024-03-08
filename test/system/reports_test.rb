@@ -31,7 +31,7 @@ class ReportsTest < ApplicationSystemTestCase
     TEXT
     click_on '登録する'
 
-    assert ['初めての日報'], @report.mentioned_reports.pluck(:title)
+    assert '初めての日報', @report.mentioned_reports.last.title
 
     assert_text '日報が作成されました。'
     click_on '日報の一覧に戻る'
