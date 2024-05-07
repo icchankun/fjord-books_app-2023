@@ -15,7 +15,7 @@ RSpec.describe Report, type: :model do
       end
     end
 
-    context 'as a not reporting party' do
+    context 'as a not report author' do
       it 'is not editable' do
         bob = create(:user, :bob)
         expect(@alice_report.editable?(bob)).to be_falsey
