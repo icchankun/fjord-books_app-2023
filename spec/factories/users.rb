@@ -5,20 +5,5 @@ FactoryBot.define do
     sequence(:email) { |n| "example#{n}@example.com" }
     name { 'マイク' }
     password { 'password' }
-
-    trait :alice do
-      email { 'alice@example.com' }
-      name { 'アリス' }
-    end
-
-    trait :bob do
-      email { 'bob@example.com' }
-      name { 'ボブ' }
-    end
-
-    trait :nameless do
-      email { 'nameless@example.com' }
-      name { '' }
-    end
   end
 end

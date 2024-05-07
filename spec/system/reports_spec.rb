@@ -5,13 +5,13 @@ require 'rails_helper'
 RSpec.describe 'Reports', type: :system do
   describe 'Reports CRUD' do
     before do
-      alice = create(:user, :alice)
+      alice = create(:user, email: 'alice@example.com', name: 'アリス', password: 'alice-password')
       @alice_report = create(:report, user: alice)
 
       visit root_path
 
       fill_in 'Eメール', with: 'alice@example.com'
-      fill_in 'パスワード', with: 'password'
+      fill_in 'パスワード', with: 'alice-password'
       click_on 'ログイン'
 
       expect(page).to have_content 'ログインしました。'
