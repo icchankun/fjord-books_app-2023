@@ -37,8 +37,9 @@ RSpec.describe 'Reports', type: :system do
         assert_text '日報が作成されました。'
       end.to change { Report.count }.by(1)
 
-      expect(@alice_report.mentioned_reports.count).to eq 1
-      expect('初めての日報').to eq @alice_report.mentioned_reports.last.title
+      visit report_path(@alice_report)
+
+      expect(page).to have_selector '.mentions-container', text: '初めての日報'
 
       click_on '日報の一覧に戻る'
     end
@@ -55,7 +56,7 @@ RSpec.describe 'Reports', type: :system do
       click_on '更新する'
       expect(page).to have_content '日報が更新されました。'
 
-      expect(@alice_report.mentioned_reports.count).to eq 0
+      expect(page).to have_no_selector '.mentions-container', text: '最後の日報'
 
       click_on '日報の一覧に戻る'
     end
