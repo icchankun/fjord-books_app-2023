@@ -25,8 +25,10 @@ RSpec.describe Report, type: :model do
 
   describe '#created_on' do
     it 'returns a date' do
-      report = create(:report)
-      expect(report.created_on).to eq Date.current
+      travel_to '2024-5-7 12:00'.in_time_zone do
+        report = create(:report)
+        expect(report.created_on).to eq '2024-5-7'.to_date
+      end
     end
   end
 end
