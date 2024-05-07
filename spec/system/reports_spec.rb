@@ -40,8 +40,6 @@ RSpec.describe 'Reports', type: :system do
       visit report_path(@alice_report)
 
       expect(page).to have_selector '.mentions-container', text: '初めての日報'
-
-      click_on '日報の一覧に戻る'
     end
 
     scenario 'updating a report' do
@@ -57,8 +55,6 @@ RSpec.describe 'Reports', type: :system do
       expect(page).to have_content '日報が更新されました。'
 
       expect(page).to have_no_selector '.mentions-container', text: '最後の日報'
-
-      click_on '日報の一覧に戻る'
     end
 
     scenario 'destroying a report' do
