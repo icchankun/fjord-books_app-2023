@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :user do
     email { 'example@example.com' }
-    name { 'なまえ' }
+    name { 'マイク' }
     password { 'password' }
 
     trait :alice do
