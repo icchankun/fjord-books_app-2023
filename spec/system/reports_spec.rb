@@ -32,8 +32,10 @@ RSpec.describe 'Reports', type: :system do
         http://localhost:3000/reports/#{@alice_report.id}
       TEXT
 
-      click_on '登録する'
-      assert_text '日報が作成されました。'
+      expect do
+        click_on '登録する'
+        assert_text '日報が作成されました。'
+      end.to change { ReportMention.count }.by(1)
 
       visit report_path(@alice_report)
 
