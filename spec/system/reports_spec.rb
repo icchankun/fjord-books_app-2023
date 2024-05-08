@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Reports', type: :system do
   describe 'Reports CRUD' do
     before do
-      alice = create(:user, email: 'alice@example.com', name: 'アリス', password: 'alice-password')
+      alice = create(:user, email: 'alice@example.com', password: 'alice-password')
       @alice_report = create(:report, user: alice)
 
       visit root_path

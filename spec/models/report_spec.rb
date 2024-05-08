@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Report, type: :model do
   describe '#editable?' do
     before do
-      @alice = create(:user, name: 'アリス')
+      @alice = create(:user)
       @alice_report = create(:report, user: @alice)
     end
 
@@ -17,7 +17,7 @@ RSpec.describe Report, type: :model do
 
     context 'as a not report author' do
       it 'is not editable' do
-        bob = create(:user, name: 'ボブ')
+        bob = create(:user)
         expect(@alice_report.editable?(bob)).to be_falsey
       end
     end
