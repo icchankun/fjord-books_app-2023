@@ -6,7 +6,7 @@ RSpec.describe 'Reports', type: :system do
   describe 'Reports CRUD' do
     before do
       alice = create(:user, email: 'alice@example.com', password: 'alice-password')
-      @alice_report = create(:report, user: alice)
+      @alice_report = create(:report, title: 'アリスの日報', user: alice)
 
       visit root_path
 
@@ -58,10 +58,10 @@ RSpec.describe 'Reports', type: :system do
     scenario 'destroying a report' do
       visit report_path(@alice_report)
 
-      expect do
-        click_on 'この日報を削除'
-        expect(page).to have_content '日報が削除されました。'
-      end.to change { Report.count }.by(-1)
+      click_on 'この日報を削除'
+      expect(page).to have_content '日報が削除されました。'
+
+      expect(page).to have_no_selector "#report_#{@alice_report.id}", text: 'アリスの日報'
     end
   end
 end
