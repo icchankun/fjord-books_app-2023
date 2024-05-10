@@ -33,7 +33,7 @@ RSpec.describe 'Reports', type: :system do
       TEXT
 
       click_on '登録する'
-      assert_text '日報が作成されました。'
+      expect(page).to have_content '日報が作成されました。'
 
       expect(page).to have_selector '.show-item', text: '初めての日報'
 
