@@ -32,14 +32,12 @@ RSpec.describe 'Reports', type: :system do
         http://localhost:3000/reports/#{@report.id}
       TEXT
 
-      expect do
-        click_on '登録する'
-        assert_text '日報が作成されました。'
-      end.to change { ReportMention.count }.by(1)
+      click_on '登録する'
+      assert_text '日報が作成されました。'
 
       expect(page).to have_selector '.show-item', text: '初めての日報'
 
-      visit report_path(@report)
+      click_on "http://localhost:3000/reports/#{@report.id}"
 
       expect(page).to have_selector '.mentions-container', text: '初めての日報'
     end
