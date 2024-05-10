@@ -6,19 +6,19 @@ RSpec.describe Report, type: :model do
   describe '#editable?' do
     before do
       @alice = create(:user)
-      @alice_report = create(:report, user: @alice)
+      @report = create(:report, user: @alice)
     end
 
     context 'as a report author' do
       it 'is editable' do
-        expect(@alice_report.editable?(@alice)).to be_truthy
+        expect(@report.editable?(@alice)).to be_truthy
       end
     end
 
     context 'as a not report author' do
       it 'is not editable' do
         bob = create(:user)
-        expect(@alice_report.editable?(bob)).to be_falsey
+        expect(@report.editable?(bob)).to be_falsey
       end
     end
   end

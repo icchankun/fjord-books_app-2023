@@ -6,7 +6,7 @@ RSpec.describe 'Reports', type: :system do
   describe 'Reports CRUD' do
     before do
       alice = create(:user, email: 'alice@example.com', password: 'alice-password')
-      @alice_report = create(:report, title: 'アリスの日報', user: alice)
+      @report = create(:report, title: 'アリスの日報', user: alice)
 
       visit root_path
 
@@ -29,7 +29,7 @@ RSpec.describe 'Reports', type: :system do
       fill_in 'タイトル', with: '初めての日報'
       fill_in '内容', with: <<~TEXT
         参考にした日報のURLを書きました。
-        http://localhost:3000/reports/#{@alice_report.id}
+        http://localhost:3000/reports/#{@report.id}
       TEXT
 
       expect do
@@ -37,19 +37,19 @@ RSpec.describe 'Reports', type: :system do
         assert_text '日報が作成されました。'
       end.to change { ReportMention.count }.by(1)
 
-      visit report_path(@alice_report)
+      visit report_path(@report)
 
       expect(page).to have_selector '.mentions-container', text: '初めての日報'
     end
 
     scenario 'updating a report' do
-      visit report_path(@alice_report)
+      visit report_path(@report)
       click_on 'この日報を編集'
 
       fill_in 'タイトル', with: '最後の日報'
       fill_in '内容', with: <<~TEXT
         自分の日報のURLを書きました。
-        http://localhost:3000/reports/#{@alice_report.id}
+        http://localhost:3000/reports/#{@report.id}
       TEXT
       click_on '更新する'
       expect(page).to have_content '日報が更新されました。'
@@ -58,12 +58,12 @@ RSpec.describe 'Reports', type: :system do
     end
 
     scenario 'destroying a report' do
-      visit report_path(@alice_report)
+      visit report_path(@report)
 
       click_on 'この日報を削除'
       expect(page).to have_content '日報が削除されました。'
 
-      expect(page).to have_no_selector "#report_#{@alice_report.id}", text: 'アリスの日報'
+      expect(page).to have_no_selector "#report_#{@report.id}", text: 'アリスの日報'
     end
   end
 end
