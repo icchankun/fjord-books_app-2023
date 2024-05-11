@@ -65,6 +65,7 @@ RSpec.describe 'Reports', type: :system do
       click_on 'この日報を削除'
       expect(page).to have_content '日報が削除されました。'
 
+      expect(page).to have_current_path reports_path
       expect(page).to have_no_selector "#report_#{@report.id}", text: 'アリスの日報'
     end
   end
