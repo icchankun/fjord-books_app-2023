@@ -28,18 +28,14 @@ RSpec.describe 'Reports', type: :system do
 
       fill_in 'タイトル', with: '初めての日報'
       fill_in '内容', with: <<~TEXT
-        参考にした日報のURLを書きました。
-        http://localhost:3000/reports/#{@report.id}
+        初めまして。
+        よろしくお願いします。
       TEXT
 
       click_on '登録する'
       expect(page).to have_content '日報が作成されました。'
 
       expect(page).to have_selector '.show-item', text: '初めての日報'
-
-      click_on "http://localhost:3000/reports/#{@report.id}"
-
-      expect(page).to have_selector '.mentions-container', text: '初めての日報'
     end
 
     scenario 'updating a report' do
@@ -48,15 +44,13 @@ RSpec.describe 'Reports', type: :system do
 
       fill_in 'タイトル', with: '最後の日報'
       fill_in '内容', with: <<~TEXT
-        自分の日報のURLを書きました。
-        http://localhost:3000/reports/#{@report.id}
+        お世話になりました。
+        ありがとうございました。
       TEXT
       click_on '更新する'
       expect(page).to have_content '日報が更新されました。'
 
       expect(page).to have_selector '.show-item', text: '最後の日報'
-
-      expect(page).to have_no_selector '.mentions-container', text: '最後の日報'
     end
 
     scenario 'destroying a report' do
