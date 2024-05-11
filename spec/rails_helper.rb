@@ -65,8 +65,3 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
 end
-
-Capybara.configure do |config|
-  config.app_host = 'http://localhost'
-  config.server_port = 3000
-end
